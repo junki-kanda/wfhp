@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 1 79 134;
+    --accent: 140 192 222;
+    --cta: 244 162 89;
+    --background: 255 255 255;
+    --foreground: 17 24 39;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+  }
+
+  /* スムーズスクロール */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* カスタムスクロールバー */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+@layer components {
+  /* ボタンのベーススタイル */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply btn bg-accent text-white hover:bg-accent/90 focus-visible:ring-accent;
+  }
+
+  .btn-cta {
+    @apply btn bg-cta text-white hover:bg-cta/90 focus-visible:ring-cta;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-white focus-visible:ring-primary;
+  }
+
+  /* サイズバリエーション */
+  .btn-sm {
+    @apply h-9 px-3 text-sm;
+  }
+
+  .btn-md {
+    @apply h-11 px-6 text-base;
+  }
+
+  .btn-lg {
+    @apply h-14 px-8 text-lg;
+  }
+
+  /* セクションパディング */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  /* コンテナ */
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* グラデーション背景 */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary to-accent;
+  }
+
+  .gradient-cta {
+    @apply bg-gradient-to-r from-cta to-orange-400;
+  }
+
+  /* テキストグラデーション */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* カード */
+  .card {
+    @apply rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-lg;
+  }
+
+  /* フォームフィールド */
+  .form-input {
+    @apply w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+  }
+
+  .form-textarea {
+    @apply form-input min-h-[120px] resize-y;
+  }
+
+  .form-label {
+    @apply mb-2 block text-sm font-medium text-gray-700;
+  }
+
+  .form-error {
+    @apply mt-1 text-sm text-red-600;
+  }
+
+  /* アニメーション */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  /* Slickスライダーのカスタマイズ */
+  .slick-dots {
+    @apply !bottom-4;
+  }
+
+  .slick-dots li button:before {
+    @apply !text-white !opacity-50;
+  }
+
+  .slick-dots li.slick-active button:before {
+    @apply !opacity-100;
+  }
+
+  .slick-prev,
+  .slick-next {
+    @apply !z-10 before:!text-4xl before:!text-white;
+  }
+
+  .slick-prev {
+    @apply !left-4;
+  }
+
+  .slick-next {
+    @apply !right-4;
+  }
+
+  /* ヘッダーのスクロール時のスタイル */
+  .header-scrolled {
+    @apply bg-white/95 backdrop-blur-md shadow-md;
+  }
+}
+
+@layer utilities {
+  /* テキストバランス */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* アスペクト比 */
+  .aspect-hero {
+    aspect-ratio: 16 / 9;
+  }
+
+  @media (max-width: 768px) {
+    .aspect-hero {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  /* グリッドレイアウト */
+  .grid-cols-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  /* セーフエリア */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

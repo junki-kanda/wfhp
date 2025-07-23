@@ -15,7 +15,7 @@ const services = [
       '24時間コンシェルジュサービス',
     ],
     icon: Home,
-    image: '/placeholder.jpg',
+    image: '/images/services-villa.jpg',
     link: '/services#own-brand',
   },
   {
@@ -30,7 +30,7 @@ const services = [
       '月次レポーティング',
     ],
     icon: Users,
-    image: '/placeholder.jpg',
+    image: '/images/services-management.jpg',
     link: '/services#management',
   },
 ];
@@ -97,7 +97,7 @@ export default function ServicesOverview() {
                 </ul>
 
                 <Link
-                  href={service.link}
+                  href={service.link as any}
                   className="btn-primary btn-md inline-flex items-center gap-2"
                 >
                   詳しく見る

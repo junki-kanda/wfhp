@@ -55,7 +55,7 @@ export default function Header() {
             {navigation.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={item.href as any}
                 className={cn(
                   'text-sm font-medium transition-colors hover:text-primary',
                   pathname === item.href
@@ -100,11 +100,11 @@ export default function Header() {
       >
         <div className="flex flex-col h-full pt-20 pb-6 px-6">
           <nav className="flex-1">
-            <ul className="space-y-4">
+            <ul className="space-y-4 list-none">
               {navigation.map((item) => (
                 <li key={item.href}>
                   <Link
-                    href={item.href}
+                    href={item.href as any}
                     className={cn(
                       'block py-3 text-lg font-medium transition-colors hover:text-primary',
                       pathname === item.href

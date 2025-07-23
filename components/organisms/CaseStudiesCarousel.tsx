@@ -68,20 +68,22 @@ const mockCases: Partial<CaseStudy>[] = [
 ];
 
 export default function CaseStudiesCarousel() {
-  const [cases, setCases] = useState<Partial<CaseStudy>[]>(mockCases);
-  const [loading, setLoading] = useState(false);
+  const [cases, setCases] = useState<StrapiItem<CaseStudy>[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCases = async () => {
       try {
-        setLoading(true);
         const response = await getCaseStudies(1, 6);
         if (response.data.length > 0) {
-          setCases(response.data.map((item) => item.attributes));
+          setCases(response.data);
+        } else {
+          // 本番ではエラーハンドリングを強化する
+          console.warn('ケーススタディのデータが見つかりませんでした。');
         }
       } catch (error) {
         console.error('Failed to fetch case studies:', error);
-        // モックデータを使用
+        // エラー発生時は何もしない、またはフォールバックUIを表示
       } finally {
         setLoading(false);
       }
@@ -135,7 +137,7 @@ export default function CaseStudiesCarousel() {
             <Slider {...settings}>
               {cases.map((caseStudy, index) => (
                 <div key={index} className="px-4">
-                  <CaseCard caseStudy={caseStudy} />
+                  <CaseCard caseStudy={caseStudy.attributes} />
                 </div>
               ))}
             </Slider>

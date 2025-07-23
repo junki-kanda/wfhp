@@ -156,7 +156,7 @@ export function getStrapiImageUrl(
   image: any,
   format: 'thumbnail' | 'small' | 'medium' | 'large' | 'original' = 'original'
 ): string {
-  if (!image?.data?.attributes) return '/placeholder.jpg';
+  if (!image?.data?.attributes) return '/images/placeholder.jpg';
 
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
   const { attributes } = image.data;

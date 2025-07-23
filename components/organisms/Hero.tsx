@@ -8,22 +8,22 @@ import { cn } from '@/lib/utils';
 
 const slides = [
   {
-    image: '/placeholder.jpg',
+    image: '/images/hero-spring.jpg',
     alt: '軽井沢の四季 - 春',
     season: '春',
   },
   {
-    image: '/placeholder.jpg',
+    image: '/images/hero-summer.jpg',
     alt: '軽井沢の四季 - 夏',
     season: '夏',
   },
   {
-    image: '/placeholder.jpg',
+    image: '/images/hero-autumn.jpg',
     alt: '軽井沢の四季 - 秋',
     season: '秋',
   },
   {
-    image: '/placeholder.jpg',
+    image: '/images/hero-winter.jpg',
     alt: '軽井沢の四季 - 冬',
     season: '冬',
   },

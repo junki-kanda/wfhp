@@ -27,7 +27,11 @@
       "mcp__serena__summarize_changes",
       "Bash(npm run type-check:*)",
       "Bash(git rebase:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }

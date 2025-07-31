@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(mkdir:*)",
+      "Bash(move images publicimages)",
+      "Bash(xcopy:*)",
+      "Bash(robocopy:*)",
+      "Bash(dir public)",
+      "Bash(copy imageshero*.* publicimageshero)",
+      "Bash(powershell:*)",
+      "Bash(del copy_images.ps1)",
+      "Bash(rm:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(ren:*)",
+      "Bash(mv:*)",
+      "Bash(ls:*)"
+    ],
+    "deny": []
+  }
+}

@@ -1,18 +1,9 @@
 {
   "compilerOptions": {
-<<<<<<< HEAD
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-=======
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
->>>>>>> da4bff2 (second commit)
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -32,32 +23,6 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
-<<<<<<< HEAD
-      "@/*": [
-        "./*"
-      ],
-      "@/components/*": [
-        "./components/*"
-      ],
-      "@/lib/*": [
-        "./lib/*"
-      ],
-      "@/app/*": [
-        "./app/*"
-      ]
-    }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
-}
-=======
       "@/*": ["./*"]
     }
   },
@@ -65,4 +30,3 @@
   "exclude": ["node_modules", "dist", "**/*.d.ts", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
->>>>>>> da4bff2 (second commit)

@@ -2,151 +2,198 @@
 
 ## プロジェクト概要
 
-Next.js 14 (App Router), TypeScript, Tailwind CSS を使用して構築された、株式会社 WisteriaForest のレスポンシブ企業サイトです。静的ページと SSR ページが混在し、Strapi CMS と連携してコンテンツを管理します。
+Vite + React + TypeScript + Tailwind CSS + shadcn/ui を使用して構築された、株式会社 WisteriaForest のシングルページアプリケーション（SPA）企業サイトです。軽井沢の高級ヴィラ事業を中心に、AI開発、不動産コンサルティング、スタートアップ支援などの事業を紹介しています。
 
-## 成果物
+## 技術スタック
 
-1.  **Git リポジトリ構造**: `npx create-next-app@latest --typescript` を前提とした構造。
-2.  **ソースコード**: 各ページの完全な実装 (`app/`, `components/`, `lib/` など)。
-3.  **`README.md`**: ローカル開発、本番デプロイ、CMS 連携手順。
-4.  **API / 型定義**: Strapi との連携に必要な API クライアント (`lib/api/strapi.ts`) および型定義 (`lib/types/index.ts`)。
-5.  **Tailwind 設定**: カラーパレット、フォントなどを含む `tailwind.config.ts`。
-6.  **Strapi 用 Content-Type 定義 (JSON)**: `case`, `blog`, `job` などの定義ファイル。
-7.  **フォーム送信ロジック**: Next.js API Route (`app/api/contact/route.ts`) を介した SendGrid または Slack Webhook 連携。
+- **フレームワーク**: React 18.2 + TypeScript 5.3
+- **ビルドツール**: Vite 6.3
+- **スタイリング**: Tailwind CSS 3.3 + Tailwind Animate
+- **UIコンポーネント**: Radix UI + shadcn/ui
+- **フォーム**: React Hook Form 7.48 + Zod
+- **ルーティング**: React Router DOM 6.20
+- **バックエンド**: Supabase (認証・ストレージ・データベース)
+- **その他**: Lucide React (アイコン)、Sonner (トースト通知)、Recharts (チャート)
 
-## 必須要件 (実装済み)
+## プロジェクト構成
 
--   **グローバル設定**: フォント (`Playfair Display`, `Noto Sans JP`)、カラー変数 (`primary`, `accent`, `cta`)、Meta / SEO (Next.js Metadata API)、Analytics (Plausible)。
--   **ページ & ルーティング**:
-    -   `/`: トップページ (ヒーロー、実績、サービス概要、事例、プロセス、CTA)
-    -   `/services`: 事業紹介
-    -   `/cases`: 実績・事例 (Strapi から SSG + ISR)
-    -   `/company`: 会社情報 (代表メッセージ、沿革、SNS)
-    -   `/careers`: 採用情報 (Strapi から募集一覧 + エントリーフォーム)
-    -   `/blog/[slug]`: ブログ / コラム (Markdown 形式で Strapi から取得)
-    -   `/contact`: 問い合わせフォーム (タブ切り替え: 開業相談 / 運営受託 / 採用)
--   **UI コンポーネント**: `components/` に Atomic Design 準拠 (Header, Hero, StatsCounter, CaseCardCarousel, ProcessStep, CTASection, Footer, Lucide React アイコン)。
--   **レスポンシブデザイン**: Tailwind のコンテナ/列ユーティリティ (`Desktop ≥1024px: 12 列`, `Tablet 768–1023px: 8 列`, `Mobile ≤767px: 4 列`)、`next/image` + WebP、自動 Sizing。
--   **フォーム仕様**: 共通バリデーション (React Hook Form + Zod)、ファイル添付、SendGrid/Slack Webhook連携。
--   **CMS (Strapi Cloud)**: Content-Type (`case`, `blog`, `job`)、GraphQL or REST fetch (SWR キャッシュ)、`.env.example` に環境変数。
--   **開発フロー**: `yarn install` → `yarn dev`、`yarn build && yarn start`、`vercel.json` (Edge Functions)、GitHub Actions (`.github/workflows/deploy.yml`)。
--   **コーディング規約**: ESLint (next/core-web-vitals) + Prettier + Husky pre-commit、`src/` alias、JSDoc / TSdoc、ユニットテスト (React Testing Library + Jest)。
+```
+wf-hp/
+├── app/                    # Next.js互換のページ構造（未使用）
+├── components/            
+│   ├── ui/                # shadcn/ui コンポーネント
+│   ├── forms/             # フォームコンポーネント
+│   ├── layout/            # ヘッダー・フッター
+│   ├── molecules/         # 中規模コンポーネント
+│   ├── organisms/         # 大規模コンポーネント
+│   ├── pages/             # ページコンポーネント
+│   └── sections/          # セクションコンポーネント
+├── lib/                   
+│   ├── supabase.ts        # Supabase クライアント
+│   └── utils/             # ユーティリティ関数
+├── public/                
+│   └── images/            # 画像アセット
+├── styles/                
+│   └── globals.css        # グローバルスタイル
+├── App.tsx                # メインアプリケーションコンポーネント
+├── main.tsx               # エントリーポイント
+└── index.html             # HTMLテンプレート
+```
 
-## ローカル開発手順
+## 主な機能
 
-1.  **リポジトリのクローン**: 
-    ```bash
-    git clone [your-repository-url]
-    cd wfhp
-    ```
+### ページ構成（SPA内部ルーティング）
+- **ホーム**: ヒーロー、統計、サービス概要、軽井沢ヴィラ紹介、CTA
+- **サービス**: 4つの事業領域の詳細（宿泊施設運営、AI開発、不動産コンサルティング、スタートアップ支援）
+- **事例**: 実績・プロジェクト紹介
+- **会社情報**: 代表メッセージ、企業理念、沿革、チーム紹介
+- **採用情報**: 募集職種一覧、エントリーフォーム
+- **ブログ**: 記事一覧、個別記事、ブックマーク機能
+- **お問い合わせ**: タブ切り替え式フォーム（相談・資料請求・採用）
+- **管理画面**: コンテンツ管理機能
 
-2.  **依存関係のインストール**: 
-    ```bash
-    npm install # または yarn install
-    ```
+### 技術的特徴
+- **レスポンシブデザイン**: モバイル、タブレット、デスクトップ対応
+- **画像最適化**: Supabase Storage との連携
+- **フォームバリデーション**: Zod スキーマによる型安全なバリデーション
+- **状態管理**: React フックによるローカルステート管理
+- **アニメーション**: Tailwind Animate による洗練されたUI
 
-3.  **環境変数の設定**: 
-    `.env.example` を参考に、プロジェクトルートに `.env.local` ファイルを作成し、環境変数を設定します。
-    -   `STRAPI_API_URL`: Strapi インスタンスの URL (例: `http://localhost:1337` またはデプロイ済み Strapi の URL)
-    -   `STRAPI_TOKEN`: Strapi から発行した API トークン (必要に応じて)
-    -   `SENDGRID_API_KEY`: SendGrid の API キー
-    -   `SENDGRID_FROM_EMAIL`: SendGrid で設定した送信元メールアドレス
-    -   `SENDGRID_TO_EMAIL`: フォーム送信を受け取るメールアドレス
-    -   `HR_WEBHOOK_URL`: 採用エントリーフォームの Slack Webhook URL (任意)
-    -   `PLAUSIBLE_DOMAIN`: Plausible Analytics のドメイン (例: `your-domain.com`)
+## 開発環境のセットアップ
 
-4.  **Strapi のセットアップ (ローカル開発用、任意)**:
-    もしローカルで Strapi を実行する場合は、Strapi のプロジェクトを別途セットアップし、[Strapi のドキュメント](https://docs.strapi.io/developer-docs/latest/getting-started/quick-start.html)に従って Content-Type をインポートしてください。Content-Type 定義は `strapi-content-types/` ディレクトリにあります。
+### 前提条件
+- Node.js 18以上
+- npm または pnpm
 
-5.  **開発サーバーの起動**:
-    ```bash
-    npm run dev # または yarn dev
-    ```
-    これで `http://localhost:3000` でサイトにアクセスできます。
+### インストール手順
 
-## 本番デプロイ手順 (Vercel を想定)
+1. **リポジトリのクローン**
+   ```bash
+   git clone [your-repository-url]
+   cd wf-hp
+   ```
 
-1.  **Vercel プロジェクトのセットアップ**:
-    GitHub リポジトリを Vercel に連携し、新しいプロジェクトを作成します。
+2. **依存関係のインストール**
+   ```bash
+   npm install
+   # または
+   pnpm install
+   ```
 
-2.  **環境変数の設定**: 
-    Vercel のプロジェクト設定で、ローカル開発時と同様に環境変数を設定します。
-    -   `STRAPI_API_URL`
-    -   `STRAPI_TOKEN`
-    -   `SENDGRID_API_KEY`
-    -   `SENDGRID_FROM_EMAIL`
-    -   `SENDGRID_TO_EMAIL`
-    -   `HR_WEBHOOK_URL`
-    -   `PLAUSIBLE_DOMAIN`
+3. **環境変数の設定**
+   `.env.local` ファイルを作成し、以下の環境変数を設定：
+   ```env
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
 
-3.  **`vercel.json` の設定 (もし存在しない場合)**:
-    プロジェクトルートに `vercel.json` を作成し、Edge Functions を有効にします。
-    ```json
-    {
-      "functions": {
-        "app/api/**/*": {
-          "runtime": "edge"
-        }
-      }
-    }
-    ```
+4. **開発サーバーの起動**
+   ```bash
+   npm run dev
+   # または
+   pnpm dev
+   ```
+   
+   http://localhost:5173 でアプリケーションにアクセスできます。
 
-4.  **GitHub Actions の設定 (自動デプロイ)**:
-    `.github/workflows/deploy.yml` を作成し、GitHub への `push` で Vercel CLI を使用して自動デプロイされるように設定します。
-    ```yaml
-    name: Deploy to Vercel
+## ビルドとデプロイ
 
-    on: 
-      push:
-        branches:
-          - main
+### ビルド
+```bash
+npm run build
+# または
+pnpm build
+```
 
-    jobs:
-      deploy:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-          - name: Install dependencies
-            run: npm install --frozen-lockfile
-          - name: Build project
-            run: npm run build
-          - name: Deploy to Vercel
-            uses: amondnet/vercel-action@v20
-            with:
-              vercel-token: ${{ secrets.VERCEL_TOKEN }}
-              vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-              vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-              prod: true
-    ```
-    -   `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` は GitHub Secrets に設定してください。
+### プレビュー
+```bash
+npm run preview
+# または
+pnpm preview
+```
 
-## CMS (Strapi) 連携手順
+### 型チェック
+```bash
+npm run type-check
+# または
+pnpm type-check
+```
 
-1.  **Strapi Cloud インスタンスの準備**: 
-    Strapi Cloud または自己ホスト型 Strapi インスタンスを準備します。
+### Lint
+```bash
+npm run lint
+# または
+pnpm lint
+```
 
-2.  **Content-Type Builder で定義をインポート**: 
-    Strapi の管理画面にログインし、`Content-Type Builder` に移動します。`strapi-content-types/` ディレクトリにある `case.json`, `blog.json`, `job.json` の内容をコピーして、新しい Collection Type として作成またはインポートします。これにより、必要なデータ構造が Strapi に反映されます。
+## Supabase設定
 
-3.  **API トークンの発行**: 
-    Strapi の `Settings` → `API Tokens` で、この Next.js アプリケーションから Strapi の API を読み取るためのトークンを発行します。このトークンを `.env.local` および Vercel の環境変数 `STRAPI_TOKEN` に設定します。
+1. **プロジェクトの作成**
+   - [Supabase](https://supabase.com) でプロジェクトを作成
+   - プロジェクトURL と Anon Key を取得
 
-4.  **コンテンツの追加**: 
-    Strapi の管理画面で、作成した Content-Type に従ってコンテンツ (事例、ブログ記事、求人情報など) を追加します。
+2. **ストレージバケットの設定**
+   - `images` バケットを作成
+   - パブリックアクセスを許可
 
-5.  **公開**: 
-    追加したコンテンツを公開設定にしてください。
+3. **データベーステーブル（必要に応じて）**
+   - ブログ記事、事例、採用情報などのテーブルを作成
 
-これで Next.js アプリケーションが Strapi からデータを取得し、表示できるようになります。
+## デプロイ
 
-## テスト
+### Vercel
+```bash
+# Vercel CLIのインストール
+npm i -g vercel
 
--   **ユニットテスト**: `npm test` または `yarn test` で Jest と React Testing Library を使用したユニットテストを実行できます。
--   **Lighthouse**: 本番デプロイ後、Google Chrome の Lighthouse ツールでモバイル Performance 80+ を確認してください。
+# デプロイ
+vercel
+```
 
-## コーディング規約
+### Netlify
+1. GitHub リポジトリと連携
+2. ビルドコマンド: `npm run build`
+3. 公開ディレクトリ: `dist`
+4. 環境変数を設定
 
--   ESLint と Prettier が設定されており、コードの整形と品質チェックが行われます。
--   Husky が Pre-commit フックでフォーマットと lint チェックを実行します。
--   JSDoc / TSdoc で関数コメントを義務付けています。
--   `tsconfig.json` で `src/` alias が設定されており、絶対パスでのインポートが可能です (例: `import Header from '@/components/organisms/Header';`)。 
+## 開発ガイドライン
+
+### コーディング規約
+- TypeScript の strict モードを使用
+- ESLint ルールに従う
+- コンポーネントは関数コンポーネントで記述
+- カスタムフックは `use` プレフィックスを使用
+
+### コンポーネント構成
+- **ui/**: 再利用可能な基本UIコンポーネント（shadcn/ui）
+- **molecules/**: 複数のUIコンポーネントを組み合わせた中規模コンポーネント
+- **organisms/**: ビジネスロジックを含む大規模コンポーネント
+- **sections/**: ページ内のセクション単位のコンポーネント
+- **pages/**: 各ページの実装
+
+### スタイリング
+- Tailwind CSS のユーティリティクラスを優先使用
+- カスタムスタイルは `globals.css` に記述
+- レスポンシブデザインは Tailwind のブレークポイントを使用
+
+## トラブルシューティング
+
+### パッケージの競合
+package.json に Git のマージコンフリクトが残っている場合は、手動で解決してください。
+
+### 型エラー
+`npm run type-check` で型エラーを確認し、修正してください。
+
+### ビルドエラー
+1. `node_modules` と `pnpm-lock.yaml` を削除
+2. 再度 `pnpm install` を実行
+
+## ライセンス
+
+Private - All rights reserved
+
+## お問い合わせ
+
+株式会社 WisteriaForest
+- Email: info@wisteriaforest.com
+- Website: https://wisteriaforest.com

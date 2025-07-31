@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(mkdir:*)",
+      "Bash(move images publicimages)",
+      "Bash(xcopy:*)",
+      "Bash(robocopy:*)",
+      "Bash(dir public)",
+      "Bash(copy imageshero*.* publicimageshero)",
+      "Bash(powershell:*)",
+      "Bash(del copy_images.ps1)",
+      "Bash(rm:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(ren:*)",
+      "Bash(mv:*)",
+      "Bash(ls:*)",
+      "mcp__serena__list_memories",
+      "mcp__serena__activate_project",
+      "mcp__serena__list_dir",
+      "mcp__serena__think_about_collected_information",
+      "mcp__serena__think_about_task_adherence",
+      "mcp__serena__think_about_whether_you_are_done",
+      "mcp__serena__summarize_changes"
+    ],
+    "deny": []
+  }
+}

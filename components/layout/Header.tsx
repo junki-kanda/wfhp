@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from '../ui/sheet';
 
@@ -33,10 +34,13 @@ export function Header({ currentPage, setCurrentPage }: HeaderProps) {
             className="flex items-center cursor-pointer space-x-2"
             onClick={() => handleNavClick('home')}
           >
-            <img 
+            <Image 
               src="/images/logo/logo.png" 
               alt="WisteriaForest" 
+              width={40}
+              height={40}
               className="h-10 w-auto"
+              priority
             />
             <span className="font-heading text-xl text-black">WisteriaForest</span>
           </div>
@@ -86,9 +90,11 @@ export function Header({ currentPage, setCurrentPage }: HeaderProps) {
                   className="flex items-center cursor-pointer space-x-2 pb-6 border-b"
                   onClick={() => handleNavClick('home')}
                 >
-                  <img 
+                  <Image 
                     src="/images/logo/logo.png" 
-                    alt="WisteriaForest" 
+                    alt="WisteriaForest"
+                    width={32}
+                    height={32}
                     className="h-8 w-auto"
                   />
                   <span className="font-heading text-lg text-black">WisteriaForest</span>

@@ -4,18 +4,18 @@ import { notFound } from 'next/navigation';
 import RichTextRenderer from '@/components/organisms/RichTextRenderer';
 
 interface BlogPostPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const response = await getBlogPosts(1, 100); // すべての記事を取得
+  const response = await getBlogPosts(); // すべての記事を取得
   return response.data.map((post) => ({ slug: post.attributes.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const response = await getBlogPostBySlug(slug);
   const post = response.data[0]?.attributes;
 
@@ -47,7 +47,7 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const response = await getBlogPostBySlug(slug);
   const post = response.data[0]?.attributes;
 

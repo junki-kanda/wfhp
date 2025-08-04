@@ -1,24 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
-import { Hero } from './components/sections/Hero';
-import { StatsCounter } from './components/sections/StatsCounter';
-import { ServicesSection } from './components/sections/ServicesSection';
-import { KaruizawaHouseVillaSection } from './components/sections/KaruizawaHouseVillaSection';
-import { CTASection } from './components/sections/CTASection';
-import { ContactForm } from './components/forms/ContactForm';
-import { ServicesPage } from './components/pages/ServicesPage';
-import { CasesPage } from './components/pages/CasesPage';
-import { CompanyPage } from './components/pages/CompanyPage';
-import { CareersPage } from './components/pages/CareersPage';
-import { BlogPage } from './components/pages/BlogPage';
-import { BlogPostPage } from './components/pages/BlogPostPage';
-import { ContactPage } from './components/pages/ContactPage';
-import { BookmarksPage } from './components/pages/BookmarksPage';
-import { PrivacyPolicyPage } from './components/pages/PrivacyPolicyPage';
-import { TermsOfServicePage } from './components/pages/TermsOfServicePage';
-import { AdminPage } from './components/pages/AdminPage';
 import { Toaster } from './components/ui/sonner';
+
+// Dynamic imports for heavy components
+const Hero = lazy(() => import('./components/sections/Hero').then(module => ({ default: module.Hero })));
+const StatsCounter = lazy(() => import('./components/sections/StatsCounter').then(module => ({ default: module.StatsCounter })));
+const ServicesSection = lazy(() => import('./components/sections/ServicesSection').then(module => ({ default: module.ServicesSection })));
+const KaruizawaHouseVillaSection = lazy(() => import('./components/sections/KaruizawaHouseVillaSection').then(module => ({ default: module.KaruizawaHouseVillaSection })));
+const CTASection = lazy(() => import('./components/sections/CTASection').then(module => ({ default: module.CTASection })));
+
+// Dynamic imports for page components
+const ServicesPage = lazy(() => import('./components/pages/ServicesPage').then(module => ({ default: module.ServicesPage })));
+const CasesPage = lazy(() => import('./components/pages/CasesPage').then(module => ({ default: module.CasesPage })));
+const CompanyPage = lazy(() => import('./components/pages/CompanyPage').then(module => ({ default: module.CompanyPage })));
+const CareersPage = lazy(() => import('./components/pages/CareersPage').then(module => ({ default: module.CareersPage })));
+const BlogPage = lazy(() => import('./components/pages/BlogPage').then(module => ({ default: module.BlogPage })));
+const BlogPostPage = lazy(() => import('./components/pages/BlogPostPage').then(module => ({ default: module.BlogPostPage })));
+const ContactPage = lazy(() => import('./components/pages/ContactPage').then(module => ({ default: module.ContactPage })));
+const BookmarksPage = lazy(() => import('./components/pages/BookmarksPage').then(module => ({ default: module.BookmarksPage })));
+const PrivacyPolicyPage = lazy(() => import('./components/pages/PrivacyPolicyPage').then(module => ({ default: module.PrivacyPolicyPage })));
+const TermsOfServicePage = lazy(() => import('./components/pages/TermsOfServicePage').then(module => ({ default: module.TermsOfServicePage })));
+const AdminPage = lazy(() => import('./components/pages/AdminPage').then(module => ({ default: module.AdminPage })));
 
 type PageType = 'home' | 'services' | 'cases' | 'company' | 'careers' | 'blog' | 'blog-post' | 'bookmarks' | 'contact' | 'privacy' | 'terms' | 'admin';
 type ContactTabType = 'consultation' | 'download' | 'career';
@@ -101,7 +104,9 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <main className="flex-1">
-        {renderPage()}
+        <Suspense fallback={<div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div></div>}>
+          {renderPage()}
+        </Suspense>
       </main>
       <Footer setCurrentPage={setCurrentPage} />
       <Toaster richColors position="top-right" />

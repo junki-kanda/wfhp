@@ -1,12 +1,19 @@
 {
-  "installCommand": "npm install",
+  "framework": "nextjs",
+  "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+  "devCommand": "npm run dev",
+  "env": {
+    "NEXT_PUBLIC_PLAUSIBLE_DOMAIN": "@plausible_domain"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
     }
-  ]
+  },
+  "functions": {
+    "app/api/**.ts": {
+      "runtime": "edge"
+    }
+  }
 }

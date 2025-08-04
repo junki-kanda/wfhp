@@ -3,13 +3,13 @@ import { getBlogPostBySlug } from '@/lib/api/strapi';
 
 interface BlogLayoutProps {
   children: React.ReactNode;
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: BlogLayoutProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const response = await getBlogPostBySlug(slug);
   const post = response.data[0]?.attributes;
 

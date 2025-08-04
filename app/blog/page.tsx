@@ -10,10 +10,11 @@ export const metadata: Metadata = {
 export default async function BlogPage({
   searchParams,
 }: { 
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const category = searchParams?.category as string | undefined;
-  const response = await getBlogPosts(1, 12, category);
+  const params = await searchParams;
+  const category = params?.category as string | undefined;
+  const response = await getBlogPosts();
   const posts = response.data.map((item) => item.attributes);
   const categories = await getCategories();
 

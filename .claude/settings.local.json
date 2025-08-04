@@ -33,7 +33,17 @@
       "Bash(git pull:*)",
       "Bash(git commit:*)",
       "Bash(git cherry-pick:*)",
-      "Bash(npm cache clean:*)"
+      "Bash(npm cache clean:*)",
+      "Bash(env)",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__find_file",
+      "mcp__serena__read_file",
+      "mcp__serena__create_text_file",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__replace_regex",
+      "Bash(set ANALYZE=true)",
+      "Bash(npm run build:*)",
+      "Bash(del .babelrc)"
     ],
     "deny": []
   }

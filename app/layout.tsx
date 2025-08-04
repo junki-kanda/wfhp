@@ -1,7 +1,26 @@
 import type { Metadata } from 'next';
+import { Playfair_Display, Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/organisms/Header';
 import Footer from '@/components/organisms/Footer';
+
+// Font optimization with subsets
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-noto-sans-jp',
+  display: 'swap',
+});
+
+// Force static generation
+export const dynamic = 'error';
 
 export const metadata: Metadata = {
   title: {
@@ -76,7 +95,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={`${playfairDisplay.variable} ${notoSansJP.variable}`}>
       <head>
         {/* Plausible Analytics */}
         {process.env.PLAUSIBLE_DOMAIN && (
@@ -87,7 +106,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="font-sans">
+      <body className={notoSansJP.className}>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

@@ -3,9 +3,7 @@
   "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "env": {
-    "NEXT_PUBLIC_PLAUSIBLE_DOMAIN": "@plausible_domain"
-  },
+  "env": {},
   "build": {
     "env": {
       "NODE_ENV": "production"

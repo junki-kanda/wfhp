@@ -1,18 +1,4 @@
 {
   "version": 2,
-  "framework": "nextjs",
-  "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "env": {},
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
-  "functions": {
-    "app/api/**.ts": {
-      "runtime": "edge"
-    }
-  }
+  "installCommand": "npm install --legacy-peer-deps"
 }

@@ -98,13 +98,11 @@ export default function RootLayout({
     <html lang="ja" className={`${playfairDisplay.variable} ${notoSansJP.variable}`}>
       <head>
         {/* Plausible Analytics */}
-        {process.env.PLAUSIBLE_DOMAIN && (
-          <script
-            defer
-            data-domain={process.env.PLAUSIBLE_DOMAIN}
-            src="https://plausible.io/js/script.js"
-          />
-        )}
+        <script
+          defer
+          data-domain="wst-f.com"
+          src="https://plausible.io/js/script.js"
+        />
       </head>
       <body className={notoSansJP.className}>
         <Header />

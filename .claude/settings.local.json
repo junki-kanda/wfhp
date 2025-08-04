@@ -17,7 +17,23 @@
       "Bash(curl:*)",
       "Bash(ren:*)",
       "Bash(mv:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "mcp__serena__list_memories",
+      "mcp__serena__activate_project",
+      "mcp__serena__list_dir",
+      "mcp__serena__think_about_collected_information",
+      "mcp__serena__think_about_task_adherence",
+      "mcp__serena__think_about_whether_you_are_done",
+      "mcp__serena__summarize_changes",
+      "Bash(npm run type-check:*)",
+      "Bash(git rebase:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git commit:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(npm cache clean:*)"
     ],
     "deny": []
   }

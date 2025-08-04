@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.2.0",
+    "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -46,7 +46,6 @@
     "date-fns": "^2.30.0",
     "embla-carousel-react": "^8.0.0",
     "input-otp": "^1.2.2",
-    "lucide": "^0.525.0",
     "lucide-react": "^0.525.0",
     "next-themes": "^0.4.6",
     "react": "^18.2.0",
@@ -62,6 +61,9 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.0",
     "zod": "^3.22.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",

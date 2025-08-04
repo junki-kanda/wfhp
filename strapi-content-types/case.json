@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies",
+  "info": {
+    "singularName": "case-study",
+    "pluralName": "case-studies",
+    "displayName": "Case Study",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "beforeStats": {
+      "type": "json",
+      "required": true,
+      "default": {
+        "occupancyRate": 0,
+        "averageRevenue": 0,
+        "guestRating": 0
+      }
+    },
+    "afterStats": {
+      "type": "json",
+      "required": true,
+      "default": {
+        "occupancyRate": 0,
+        "averageRevenue": 0,
+        "guestRating": 0
+      }
+    },
+    "clientName": {
+      "type": "string"
+    },
+    "clientTestimonial": {
+      "type": "text"
+    },
+    "propertyType": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    }
+  }
+} 

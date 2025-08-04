@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, MapPin, TrendingUp, Shield } from 'lucide-react';
 import { Button } from '../ui/button';
 
-type ContactTabType = 'consultation' | 'management' | 'download' | 'career';
+import { NavigateFn } from '../../types/navigation';
 
 interface HeroProps {
-  setCurrentPage: (page: 'home' | 'services' | 'cases' | 'company' | 'careers' | 'blog' | 'contact', options?: { contactTab?: ContactTabType }) => void;
+  setCurrentPage: NavigateFn;
 }
 
 export function Hero({ setCurrentPage }: HeroProps) {

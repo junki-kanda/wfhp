@@ -4,7 +4,7 @@ import CaseCard from '@/components/molecules/CaseCard';
 export const revalidate = 3600;
 
 export default async function CasesPage() {
-  const response = await getCaseStudies(1, 6);
+  const response = await getCaseStudies();
   const cases = response.data.map(item => item.attributes);
 
   return (
@@ -21,7 +21,7 @@ export default async function CasesPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {cases.map((cs, idx) => (
-            <CaseCard key={idx} caseStudy={cs} />
+            <CaseCard key={idx} {...cs} />
           ))}
         </div>
       </div>

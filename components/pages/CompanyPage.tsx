@@ -3,10 +3,10 @@ import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 
-type ContactTabType = 'consultation' | 'management' | 'download' | 'career';
+import { NavigateFn } from '../../types/navigation';
 
 interface CompanyPageProps {
-  setCurrentPage?: (page: 'home' | 'services' | 'cases' | 'company' | 'careers' | 'blog' | 'contact', options?: { contactTab?: ContactTabType }) => void;
+  setCurrentPage?: NavigateFn;
 }
 
 export function CompanyPage({ setCurrentPage }: CompanyPageProps) {

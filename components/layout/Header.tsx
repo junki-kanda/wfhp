@@ -4,9 +4,11 @@ import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from '../ui/sheet';
 
+import { PageType } from '../../types';
+
 interface HeaderProps {
-  currentPage: string;
-  setCurrentPage: (page: string) => void;
+  currentPage: PageType;
+  setCurrentPage: (page: PageType) => void;
 }
 
 export function Header({ currentPage, setCurrentPage }: HeaderProps) {

@@ -1,0 +1,41 @@
+{
+  "app\\page.tsx -> @/components/organisms/CaseStudiesCarousel": {
+    "id": 7111,
+    "files": [
+      "static/css/a28a9a33feb11f1f.css",
+      "static/chunks/874-88e24f0e286df0b2.js",
+      "static/chunks/598-f4e43404acbf0040.js",
+      "static/chunks/536.fb2c1c1ae9529ee5.js",
+      "static/chunks/111.3693788a4d104b45.js"
+    ]
+  },
+  "app\\page.tsx -> @/components/organisms/Hero": {
+    "id": 7113,
+    "files": [
+      "static/chunks/63-e830d34011207317.js",
+      "static/chunks/874-88e24f0e286df0b2.js",
+      "static/chunks/598-f4e43404acbf0040.js",
+      "static/chunks/113.5ec4fc5a9899c1a4.js"
+    ]
+  },
+  "app\\page.tsx -> @/components/organisms/ServicesOverview": {
+    "id": 3979,
+    "files": [
+      "static/chunks/63-e830d34011207317.js",
+      "static/chunks/874-88e24f0e286df0b2.js",
+      "static/chunks/979.e4e6600d1ccb243d.js"
+    ]
+  },
+  "node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": 472,
+    "files": [
+      "static/chunks/472.a3826d29d6854395.js"
+    ]
+  },
+  "node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": 9341,
+    "files": [
+      "static/chunks/341.716d46e6e5cb6bdc.js"
+    ]
+  }
+}

@@ -1,12 +1,12 @@
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { ContactForm } from '../forms/ContactForm';
-
-type FormType = 'consultation' | 'career' | 'download';
+import { ContactTabType } from '../../types';
+import { NavigateFn } from '../../types/navigation';
 
 interface ContactPageProps {
-  defaultTab?: FormType;
-  setCurrentPage?: (page: string) => void;
+  defaultTab?: ContactTabType;
+  setCurrentPage?: NavigateFn;
 }
 
 export function ContactPage({ defaultTab, setCurrentPage }: ContactPageProps) {

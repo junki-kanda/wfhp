@@ -43,7 +43,11 @@
       "mcp__serena__replace_regex",
       "Bash(set ANALYZE=true)",
       "Bash(npm run build:*)",
-      "Bash(del .babelrc)"
+      "Bash(del .babelrc)",
+      "Bash(git reset:*)",
+      "Bash(dir:*)",
+      "Bash(vercel:*)",
+      "mcp__serena__replace_lines"
     ],
     "deny": []
   }

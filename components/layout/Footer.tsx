@@ -1,7 +1,8 @@
 import { Mail, Phone, MapPin, Twitter, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { PageType } from '../../types';
 
 interface FooterProps {
-  setCurrentPage: (page: string) => void;
+  setCurrentPage: (page: PageType) => void;
 }
 
 export function Footer({ setCurrentPage }: FooterProps) {

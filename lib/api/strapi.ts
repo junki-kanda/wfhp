@@ -22,6 +22,7 @@ export interface BlogPost {
   };
   category: string;
   tags: string[];
+  readingTime?: number;
 }
 
 export interface CaseStudy {

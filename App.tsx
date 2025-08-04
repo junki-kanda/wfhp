@@ -2,6 +2,8 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Toaster } from './components/ui/sonner';
+import { PageType, ContactTabType } from './types';
+import { NavigateFn } from './types/navigation';
 
 // Dynamic imports for heavy components
 const Hero = lazy(() => import('./components/sections/Hero').then(module => ({ default: module.Hero })));
@@ -23,8 +25,7 @@ const PrivacyPolicyPage = lazy(() => import('./components/pages/PrivacyPolicyPag
 const TermsOfServicePage = lazy(() => import('./components/pages/TermsOfServicePage').then(module => ({ default: module.TermsOfServicePage })));
 const AdminPage = lazy(() => import('./components/pages/AdminPage').then(module => ({ default: module.AdminPage })));
 
-type PageType = 'home' | 'services' | 'cases' | 'company' | 'careers' | 'blog' | 'blog-post' | 'bookmarks' | 'contact' | 'privacy' | 'terms' | 'admin';
-type ContactTabType = 'consultation' | 'download' | 'career';
+
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
@@ -36,7 +37,7 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  const handleSetCurrentPage = (page: PageType, options?: { contactTab?: ContactTabType; postId?: string }) => {
+  const handleSetCurrentPage: NavigateFn = (page, options) => {
     setCurrentPage(page);
     if (page === 'contact' && options?.contactTab) {
       setContactDefaultTab(options.contactTab);

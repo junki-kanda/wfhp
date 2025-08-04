@@ -5,10 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { useState } from 'react';
 
-type ContactTabType = 'consultation' | 'management' | 'download' | 'career';
+import { NavigateFn } from '../../types/navigation';
 
 interface CasesPageProps {
-  setCurrentPage?: (page: 'home' | 'services' | 'cases' | 'company' | 'careers' | 'blog' | 'contact', options?: { contactTab?: ContactTabType }) => void;
+  setCurrentPage?: NavigateFn;
 }
 
 export function CasesPage({ setCurrentPage }: CasesPageProps) {

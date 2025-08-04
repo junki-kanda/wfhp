@@ -2,10 +2,10 @@ import { ArrowRight, Building2, Home, Cpu, Settings, Shield, Zap, Bot } from 'lu
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 
-type ContactTabType = 'consultation' | 'management' | 'download' | 'career';
+import { NavigateFn } from '../../types/navigation';
 
 interface ServicesSectionProps {
-  setCurrentPage?: (page: 'home' | 'services' | 'cases' | 'company' | 'careers' | 'blog' | 'contact', options?: { contactTab?: ContactTabType }) => void;
+  setCurrentPage?: NavigateFn;
 }
 
 export function ServicesSection({ setCurrentPage }: ServicesSectionProps) {

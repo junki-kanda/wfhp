@@ -31,7 +31,7 @@ export default async function BlogPage({
         </div>
 
         {/* Category Filter */}
-        {categories.length > 0 && (
+        {categories.data.length > 0 && (
           <div className="mb-8 flex flex-wrap justify-center gap-2">
             <a
               href="/blog"
@@ -41,7 +41,7 @@ export default async function BlogPage({
             >
               すべて
             </a>
-            {categories.map((cat) => (
+            {categories.data.map((cat) => (
               <a
                 key={cat}
                 href={`/blog?category=${cat}`}

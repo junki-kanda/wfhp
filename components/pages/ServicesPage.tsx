@@ -5,10 +5,10 @@ import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 
-type ContactTabType = 'consultation' | 'management' | 'download' | 'career';
+import { NavigateFn } from '../../types/navigation';
 
 interface ServicesPageProps {
-  setCurrentPage?: (page: 'home' | 'services' | 'cases' | 'company' | 'careers' | 'blog' | 'contact', options?: { contactTab?: ContactTabType }) => void;
+  setCurrentPage?: NavigateFn;
 }
 
 export function ServicesPage({ setCurrentPage }: ServicesPageProps) {
